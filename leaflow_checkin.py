@@ -575,6 +575,7 @@ class MultiAccountManager:
             data = {
                 "chat_id": self.telegram_chat_id,
                 "text": message,
+                "parse_mode": "HTML"
             }
             
             response = requests.post(url, data=data, timeout=10)
@@ -639,4 +640,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
