@@ -571,12 +571,11 @@ class MultiAccountManager:
                     message += f"账号：{masked_email}\n"
                     message += f"{status}  {result}\n\n"
             
-            safe_message = message.replace("<", "[").replace(">", "]")
-            
             url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
             data = {
                 "chat_id": self.telegram_chat_id,
-                "text": safe_message
+                "text": message,
+                "parse_mode": "HTML"
             }
             
             response = requests.post(url, data=data, timeout=10)
@@ -641,4 +640,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
